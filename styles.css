@@ -1,0 +1,469 @@
+:root {
+    --primary-color: #2563eb;
+    --secondary-color: #1e40af;
+    --text-color: #1f2937;
+    --light-bg: #f3f4f6;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    position: relative;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+#particles-js {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+/* Navbar */
+.navbar {
+    position: fixed;
+    width: 100%;
+    background: white;
+    padding: 1rem 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--primary-color);
+}
+
+/* Hero Section */
+.hero {
+    height: 100vh;
+    background: linear-gradient(rgba(37, 99, 235, 0.1), rgba(37, 99, 235, 0.05));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 1rem;
+}
+
+.hero-content {
+    max-width: 800px;
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    animation: fadeInUp 1s ease;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    animation: fadeInUp 1s ease 0.3s;
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background: var(--primary-color);
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    transition: transform 0.3s ease, background 0.3s ease;
+    animation: fadeInUp 1s ease 0.6s;
+}
+
+.cta-button:hover {
+    transform: translateY(-3px);
+    background: var(--secondary-color);
+}
+
+/* Services Section */
+.services {
+    padding: 5rem 10%;
+    background: var(--light-bg);
+}
+
+.services h2 {
+    text-align: center;
+    margin-bottom: 3rem;
+    font-size: 2.5rem;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    grid-auto-rows: minmax(200px, auto);
+}
+
+.service-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 1.5rem;
+    text-align: center;
+    transition: transform 0.3s ease;
+    margin: 1.5rem;
+    cursor: pointer;
+    position: relative;
+    overflow: visible;
+    min-width: 250px;
+    max-width: 300px;
+    z-index: 1;
+}
+
+/* Ajustar el contenido de la tarjeta */
+.service-card i {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.service-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.service-card p {
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+
+
+
+
+/* Animación de cascada para cada elemento */
+.feature, .benefits {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.service-card.active .feature:nth-child(1),
+.service-card.active .benefits:nth-child(1) {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.1s;
+}
+
+.service-card.active .feature:nth-child(2),
+.service-card.active .benefits:nth-child(2) {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.2s;
+}
+
+.service-card.active .feature:nth-child(3),
+.service-card.active .benefits:nth-child(3) {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.3s;
+}
+
+.service-card.active .benefits {
+    transition-delay: 0.4s;
+}
+
+.service-card.active .service-dropdown {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+}
+
+.service-dropdown .dropdown-content {
+    position: relative;
+    overflow: visible;
+}
+
+.node-connections {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.connection-line {
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    background: rgba(0, 86, 179, 0.3);
+    opacity: 0;
+    transform: scaleX(0);
+    transform-origin: left;
+}
+
+.service-card.active .connection-line {
+    opacity: 1;
+    transform: scaleX(1);
+    animation: connectNodes 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes connectNodes {
+    0% {
+        opacity: 0;
+        transform: scaleX(0);
+    }
+    100% {
+        opacity: 1;
+        transform: scaleX(1);
+    }
+}
+
+.service-dropdown .dropdown-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
+}
+
+.feature {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1.5rem;
+    border-radius: 10px;
+    text-align: left;
+    transition: transform 0.3s ease;
+}
+
+.feature:hover {
+    transform: translateX(5px);
+}
+
+.feature i {
+    color: #0056b3;
+    margin-right: 1rem;
+}
+
+.benefits {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1.5rem;
+    border-radius: 10px;
+    text-align: left;
+}
+
+.benefits ul {
+    list-style: none;
+    padding: 0;
+}
+
+.benefits li {
+    margin: 0.5rem 0;
+    display: flex;
+    align-items: center;
+}
+
+.benefits i {
+    color: #0056b3;
+    margin-right: 0.5rem;
+}
+
+.service-dropdown .cta-button {
+    margin-top: 2rem;
+    width: 100%;
+    max-width: 200px;
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+}
+
+.service-card i {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+/* Careers Section */
+.careers {
+    padding: 5rem 10%;
+    background: var(--light-bg);
+}
+
+.careers h2 {
+    text-align: center;
+    margin-bottom: 3rem;
+    font-size: 2.5rem;
+}
+
+.careers-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.careers-text p {
+    margin-bottom: 2rem;
+}
+
+/* About Section */
+.about {
+    padding: 5rem 10%;
+    background: white;
+}
+
+.about h2 {
+    text-align: center;
+    margin-bottom: 3rem;
+    font-size: 2.5rem;
+}
+
+.about-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* Contact Section */
+.contact {
+    padding: 5rem 10%;
+    background: var(--light-bg);
+}
+
+.contact h2 {
+    text-align: center;
+    margin-bottom: 3rem;
+    font-size: 2.5rem;
+}
+
+.contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-family: inherit;
+}
+
+.submit-button {
+    width: 100%;
+    padding: 1rem;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.3s ease;
+}
+
+.submit-button:hover {
+    background: var(--secondary-color);
+}
+
+/* Footer */
+footer {
+    background: var(--text-color);
+    color: white;
+    padding: 3rem 10% 1rem;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.footer-section h3 {
+    margin-bottom: 1rem;
+}
+
+.footer-section ul {
+    list-style: none;
+}
+
+.footer-section ul li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-section a {
+    color: white;
+    text-decoration: none;
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.social-links a {
+    font-size: 1.5rem;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+    
+    .hamburger {
+        display: block;
+        cursor: pointer;
+    }
+    
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+    
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+}
