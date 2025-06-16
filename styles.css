@@ -110,6 +110,429 @@ body {
 }
 
 /* Services Section */
+
+/* Team Section */
+.team-section {
+    text-align: center;
+    padding: 4rem 0;
+    background: var(--light-bg);
+}
+
+.team-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    padding: 0 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    align-items: center;
+}
+
+.team-member {
+    position: relative;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    border-radius: 15px;
+    padding: 2rem 1rem;
+    transition: transform 0.3s ease;
+    transform: translateY(0);
+    opacity: 0;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.team-member:nth-child(1) { animation-delay: 0s; }
+.team-member:nth-child(2) { animation-delay: 0.2s; }
+.team-member:nth-child(3) { animation-delay: 0.4s; }
+.team-member:nth-child(4) { animation-delay: 0.6s; }
+.team-member:nth-child(5) { animation-delay: 0.8s; }
+.team-member:nth-child(6) { animation-delay: 1s; }
+
+.team-member {
+    animation: slideIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.team-member:hover {
+    transform: translateY(-10px);
+}
+
+.team-photo {
+    position: relative;
+    margin: 0 auto 1.5rem;
+    z-index: 1;
+}
+
+.rounded-photo {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--primary-color);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    position: relative;
+    z-index: 2;
+}
+
+.photo-ring {
+    position: absolute;
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    border: 2px solid rgba(37, 99, 235, 0.7);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: ringRotate 3s linear infinite;
+    z-index: 1;
+    transition: all 0.5s ease;
+}
+
+.photo-orbit {
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    border: 2px solid rgba(37, 99, 235, 0.3);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: orbitRotate 8s linear infinite;
+    z-index: 0;
+}
+
+@keyframes ringRotate {
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg);
+        border-width: 2px;
+        opacity: 0.7;
+    }
+    50% {
+        border-width: 4px;
+        opacity: 0.9;
+    }
+    100% {
+        transform: translate(-50%, -50%) rotate(360deg);
+        border-width: 2px;
+        opacity: 0.7;
+    }
+}
+
+@keyframes orbitRotate {
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg);
+        border-width: 2px;
+        opacity: 0.3;
+    }
+    50% {
+        border-width: 3px;
+        opacity: 0.5;
+    }
+    100% {
+        transform: translate(-50%, -50%) rotate(360deg);
+        border-width: 2px;
+        opacity: 0.3;
+    }
+}
+
+.rounded-photo:hover {
+    transform: scale(1.05);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+}
+
+.team-photo:hover .photo-ring {
+    border-color: var(--primary-color);
+    border-width: 4px;
+    opacity: 1;
+}
+
+.team-photo:hover .photo-orbit {
+    border-color: var(--primary-color);
+    border-width: 4px;
+    opacity: 0.8;
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 3rem;
+    padding: 0 1rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.team-member {
+    position: relative;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    border-radius: 15px;
+    padding: 2rem 1rem;
+    transition: transform 0.3s ease;
+    overflow: hidden;
+}
+
+.team-member:hover {
+    transform: translateY(-10px);
+}
+
+.team-member h3 {
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+    font-size: 1.4rem;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.team-member:hover h3 {
+    color: var(--secondary-color);
+}
+
+.team-member p {
+    color: var(--secondary-color);
+    font-weight: 500;
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    transition: color 0.3s ease;
+}
+
+.team-member:hover p {
+    color: var(--primary-color);
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 3rem;
+    padding: 0 1rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.team-member {
+    position: relative;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    border-radius: 15px;
+    padding: 2rem 1rem;
+    transition: transform 0.3s ease;
+    overflow: hidden;
+}
+
+.team-member:hover {
+    transform: translateY(-10px);
+}
+
+.team-member h3 {
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+    font-size: 1.4rem;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.team-member:hover h3 {
+    color: var(--secondary-color);
+}
+
+.team-member p {
+    color: var(--secondary-color);
+    font-weight: 500;
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    transition: color 0.3s ease;
+}
+
+.team-member:hover p {
+    color: var(--primary-color);
+}
+
+.team-member h3 {
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+    font-size: 1.4rem;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.team-member:hover h3 {
+    color: var(--secondary-color);
+}
+
+.team-member p {
+    color: var(--secondary-color);
+    font-weight: 500;
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    transition: color 0.3s ease;
+}
+
+.team-member:hover p {
+    color: var(--primary-color);
+}
+
+.team-member .about-section p {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--text-color);
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.about-section {
+    padding: 4rem 0;
+    background: var(--light-bg);
+    position: relative;
+}
+
+.about-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: rgba(0,0,0,0.1);
+}
+
+.about-section:first-child::before {
+    display: none;
+}
+
+.section-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.about-section h2 {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 2rem;
+    text-align: center;
+    position: relative;
+}
+
+.about-section h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: var(--primary-color);
+    border-radius: 2px;
+}
+
+.values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.value-item {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 2rem;
+    border-radius: 15px;
+    transition: transform 0.3s ease;
+    text-align: center;
+}
+
+.value-item:hover {
+    transform: translateY(-10px);
+}
+
+.value-item i {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.value-text h3 {
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+}
+
+.value-text p {
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+.mission-section {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 6rem 0;
+}
+
+.mission-section h2 {
+    margin-bottom: 2.5rem;
+}
+
+.mission-section p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    max-width: 800px;
+    margin: 0 auto;
+    color: var(--text-color);
+}
+
+.contact-section {
+    text-align: center;
+    padding: 6rem 0;
+}
+
+.contact-section h2 {
+    margin-bottom: 2rem;
+}
+
+.cta-button-container {
+    margin-top: 2rem;
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 1.2rem 3rem;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    font-size: 1.2rem;
+    letter-spacing: 0.5px;
+    box-shadow: 0 5px 15px rgba(37, 99, 235, 0.3);
+}
+
+.cta-button:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(37, 99, 235, 0.4);
+    background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+}
+
+/* Team section specific styles */
+.team-description {
+    max-width: 800px;
+    margin: 2rem auto;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--text-color);
+}
+
+/* Services Section */
 .services {
     padding: 5rem 10%;
     background: var(--light-bg);
@@ -219,58 +642,6 @@ body {
 
 .connection-line {
     position: absolute;
-    width: 100%;
-    height: 1px;
-    background: rgba(0, 86, 179, 0.3);
-    opacity: 0;
-    transform: scaleX(0);
-    transform-origin: left;
-}
-
-.service-card.active .connection-line {
-    opacity: 1;
-    transform: scaleX(1);
-    animation: connectNodes 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-}
-
-@keyframes connectNodes {
-    0% {
-        opacity: 0;
-        transform: scaleX(0);
-    }
-    100% {
-        opacity: 1;
-        transform: scaleX(1);
-    }
-}
-
-.service-dropdown .dropdown-content {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-    padding: 2rem;
-}
-
-.feature {
-    background: rgba(255, 255, 255, 0.1);
-    padding: 1.5rem;
-    border-radius: 10px;
-    text-align: left;
-    transition: transform 0.3s ease;
-}
-
-.feature:hover {
-    transform: translateX(5px);
-}
-
-.feature i {
-    color: #0056b3;
-    margin-right: 1rem;
-}
-
-.benefits {
-    background: rgba(255, 255, 255, 0.1);
-    padding: 1.5rem;
     border-radius: 10px;
     text-align: left;
 }
