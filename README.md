@@ -19,8 +19,7 @@ This is the official website for Solid IA, a company specializing in AI solution
 - Font Awesome icons
 
 ## How to View
-
-You can view the live website at: [https://your-github-username.github.io/solid-ia](https://your-github-username.github.io/solid-ia)
+www.solidia.com.au
 
 ## Local Development
 
